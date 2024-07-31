@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import './App.css'
+import ResultHTML from "./components/ResultHTML.jsx"
 
 const App = () => {
   const [index,setIndex] = useState(1)
@@ -97,38 +98,30 @@ const App = () => {
     setIndex(index+1)   
   }
 
-  function displayOnScreen() {
-    if (index < 4) {
-      nextQuestion()
-    } else {
-      //Não sei como adicionar display block a main result   
-    }
-  }
 
-
-  
-  return (
-    <div>
-      <h1>Quiz</h1>
-      <main className='main-content' id='questions'>
+  function questionHTML() {
+    return (
+      <div>
+        <h1>Quiz</h1>
+      <main>
         <div id="informationsQuestion">
           <span>{question[index-1].name}</span>
           <span>{index}/4</span>
         </div>
         <ul>
-          <li onClick={displayOnScreen}>
+          <li onClick={nextQuestion}>
 
             {question[index-1].alternative[0].name}
 
           </li>
 
-          <li onClick={displayOnScreen}>
+          <li onClick={nextQuestion}>
 
             {question[index-1].alternative[1].name}
 
           </li>
 
-          <li onClick={displayOnScreen}>
+          <li onClick={nextQuestion}>
 
             {question[index-1].alternative[2].name}
 
@@ -136,13 +129,21 @@ const App = () => {
 
         </ul>
       </main>
+      </div>
+    )
+  }
 
-      <main className='main-content' id='result'>
-        <div>Você acertou x</div>
-        <button>Reiniciar</button>
-      </main>
-    </div>
-  )
+  
+  if (index<=4) {
+    return questionHTML()
+  } else {
+    return (
+      <div>
+        <ResultHTML/>
+      </div>
+    )
+  }
+
 }
 
 export default App
