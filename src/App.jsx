@@ -97,36 +97,49 @@ const App = () => {
     setIndex(index+1)   
   }
 
+  function displayOnScreen() {
+    if (index < 4) {
+      nextQuestion()
+    } else {
+      //Não sei como adicionar display block a main result   
+    }
+  }
+
 
   
   return (
     <div>
       <h1>Quiz</h1>
-      <main>
+      <main className='main-content' id='questions'>
         <div id="informationsQuestion">
           <span>{question[index-1].name}</span>
           <span>{index}/4</span>
         </div>
         <ul>
-          <li onClick={nextQuestion}>
+          <li onClick={displayOnScreen}>
 
             {question[index-1].alternative[0].name}
 
           </li>
 
-          <li onClick={nextQuestion}>
+          <li onClick={displayOnScreen}>
 
             {question[index-1].alternative[1].name}
 
           </li>
 
-          <li onClick={nextQuestion}>
+          <li onClick={displayOnScreen}>
 
             {question[index-1].alternative[2].name}
 
           </li>
 
         </ul>
+      </main>
+
+      <main className='main-content' id='result'>
+        <div>Você acertou x</div>
+        <button>Reiniciar</button>
       </main>
     </div>
   )

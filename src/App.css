@@ -36,7 +36,7 @@ main {
   color: #fafafa;
 }
 
-main #informationsQuestion {
+main#questions #informationsQuestion {
   display: flex;
   justify-content: space-between;
 
@@ -46,7 +46,7 @@ main #informationsQuestion {
   font-size: 1.5em;
 }
 
-main ul {
+main#questions ul {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -54,7 +54,7 @@ main ul {
   list-style-type: none;
 }
 
-main ul li {
+main#questions ul li {
   height: 40px;
 
   padding: 10px;
@@ -62,4 +62,8 @@ main ul li {
   border-radius: 10px;
 
   background-color: #5A189A;
+}
+
+main#result {
+  display: none;
 }
