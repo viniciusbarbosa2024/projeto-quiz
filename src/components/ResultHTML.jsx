@@ -1,11 +1,11 @@
 import React from 'react'
 import styles from './ResultHTML.module.css'
 
-const ResultHTML = () => {
+const ResultHTML = ({restart}) => {
   return (
     <main className={styles.result}>
           <div>Você acertou x</div>
-          <button className={styles.button}>Reiniciar</button>
+          <button className={styles.button} onClick={restart}>Reiniciar</button>
     </main>
   )
 }

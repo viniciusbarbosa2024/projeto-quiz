@@ -133,13 +133,16 @@ const App = () => {
     )
   }
 
+  function restart() {
+    setIndex(1)
+  }
   
   if (index<=4) {
     return questionHTML()
   } else {
     return (
       <div>
-        <ResultHTML/>
+        <ResultHTML restart={restart}/>
       </div>
     )
   }
