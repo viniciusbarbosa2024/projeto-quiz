@@ -132,10 +132,18 @@ const App = () => {
 
   function restart() {
     setIndex(1)
+
+    setAlternativeStatus([])
   }
 
-  function result() {
+  function numberRightAnswers() {
+    const rightAnswers = alternativeStatus.filter((status)=>{
+      if (status == true) {
+        return status
+      }
+    }).length
 
+    return rightAnswers
   }
   
   if (index<=4) {
@@ -143,8 +151,7 @@ const App = () => {
   } else {
     return (
       <div>
-        <ResultHTML restart={restart}/>
-        
+        <ResultHTML restart={restart} numberRightAnswers={numberRightAnswers()}/>
       </div>
     )
   }
