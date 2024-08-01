@@ -5,6 +5,8 @@ import ResultHTML from "./components/ResultHTML.jsx"
 
 const App = () => {
   const [index,setIndex] = useState(1)
+
+  const [alternativeStatus,setAlternativeStatus] = useState([])
   
   const question = [
     {
@@ -95,9 +97,14 @@ const App = () => {
   ]
 
   function nextQuestion() {
-    setIndex(index+1)   
+    setIndex(index+1)  
   }
 
+  function saveAlternative(idx) {
+    setAlternativeStatus([...alternativeStatus,question[index-1].alternative[idx].status])  
+    
+    nextQuestion()
+  }
 
   function questionHTML() {
     return (
@@ -109,23 +116,13 @@ const App = () => {
           <span>{index}/4</span>
         </div>
         <ul>
-          <li onClick={nextQuestion}>
-
-            {question[index-1].alternative[0].name}
-
-          </li>
-
-          <li onClick={nextQuestion}>
-
-            {question[index-1].alternative[1].name}
-
-          </li>
-
-          <li onClick={nextQuestion}>
-
-            {question[index-1].alternative[2].name}
-
-          </li>
+          {question[index-1].alternative.map((alternative,idx) => {
+            return(
+            <li onClick={() => saveAlternative(idx)}>
+              {alternative.name}  
+            </li>)
+          })}
+          
 
         </ul>
       </main>
@@ -136,6 +133,10 @@ const App = () => {
   function restart() {
     setIndex(1)
   }
+
+  function result() {
+
+  }
   
   if (index<=4) {
     return questionHTML()
@@ -143,6 +144,7 @@ const App = () => {
     return (
       <div>
         <ResultHTML restart={restart}/>
+        
       </div>
     )
   }
