@@ -64,3 +64,6 @@ main ul li {
   background-color: #5A189A;
 }
 
+main ul li:hover {
+  background-color: #632f97;
+}
